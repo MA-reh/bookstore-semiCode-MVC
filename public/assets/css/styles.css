@@ -1,0 +1,70 @@
+nav.navbar .navbar-brand {
+  width: 8%;
+}
+@media (max-width: 1300px) {
+  nav.navbar .navbar-brand {
+    width: 20%;
+  }
+}
+@media (min-width: 576px) and (max-width: 1300px) {
+  nav.navbar .navbar-brand {
+    width: 13%;
+  }
+}
+@media (min-width: 992px) and (max-width: 1300px) {
+  nav.navbar .navbar-brand {
+    width: 10%;
+  }
+}
+@media (min-width: 1184px) and (max-width: 1300px) {
+  nav.navbar .navbar-brand {
+    width: 10%;
+  }
+}
+
+@media (max-width: 1300px) {
+  #Home #carouselExampleCaptions .carousel-inner .carousel-item .row {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+@media (min-width: 992px) and (max-width: 1300px) {
+  #Home #carouselExampleCaptions .carousel-inner .carousel-item .row {
+    flex-direction: row;
+  }
+}
+@media (max-width: 1300px) {
+  #Home #carouselExampleCaptions .carousel-inner .carousel-item .row .part {
+    height: max-content !important;
+  }
+}
+@media (min-width: 992px) and (max-width: 1300px) {
+  #Home #carouselExampleCaptions .carousel-inner .carousel-item .row .part {
+    height: 100% !important;
+  }
+}
+#Home #carouselExampleCaptions .carousel-inner .carousel-item .row .part img {
+  max-width: 450px;
+}
+
+.cartBooks {
+  max-width: 350px;
+}
+@media (max-width: 1300px) {
+  .cartBooks {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1300px) {
+  .brDrop {
+    width: 100%;
+  }
+}
+@media (min-width: 371px) and (max-width: 1300px) {
+  .brDrop {
+    width: fit-content;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

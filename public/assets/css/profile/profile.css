@@ -1,0 +1,75 @@
+#Profile {}
+
+#Profile .row1 {}
+
+/* Left */
+#Profile .row1 .userData {}
+
+#Profile .row1 .userData>.item,
+#Profile .row1 .data>.item {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#Profile .row1 .userData .item i {
+    cursor: pointer;
+    color: #09c;
+}
+
+.icon-trash {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #f00;
+    cursor: pointer;
+}
+
+#Profile .row1 .userData .item .user-image {
+    width: 125px;
+    height: 125px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin: auto;
+}
+
+#Profile .row1 .userData .item .user-image img {
+    display: block;
+    margin: auto;
+    
+
+}
+
+#Profile .row1 .userData .item .username {}
+
+#Profile .row1 .userData .item .row2 {}
+
+textarea {
+    resize: none;
+}
+
+/* Right */
+#Profile .row1 .data {}
+
+#Profile .row1 .data .row2 {}
+
+#popupShowOrderModal .data .card .profile,
+#popupCartModal .data .card .profile,
+#Profile .row1 .data .row2 .card .profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+#popupShowOrderModal .data .card .profile img,
+#popupCartModal .data .card .profile img,
+#Profile .row1 .data .row2 .card .profile img {
+    width: 125px;
+    border-radius: 100%;
+}
+
+#Profile .row1 .data table {
+    box-shadow: none !important;
+}

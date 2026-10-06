@@ -1,0 +1,51 @@
+#Home {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#Home #carouselExampleCaptions {
+    min-height: 50vh;
+    flex-grow: 1;
+    display: flex;
+}
+
+#Home #carouselExampleCaptions .carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    background-color: rgb(32, 164, 32);
+    border-radius: 100%;
+}
+
+#Home #carouselExampleCaptions .carousel-inner {
+    min-height: 50vh;
+    flex-grow: 1;
+}
+
+#Home #carouselExampleCaptions .carousel-inner .carousel-item {
+    height: 100%;
+}
+
+#Home #carouselExampleCaptions .carousel-inner .carousel-item .container {
+    height: 100%;
+}
+
+#Home #carouselExampleCaptions .carousel-inner .carousel-item .row {
+    height: 100%;
+}
+
+#Home #carouselExampleCaptions .carousel-inner .carousel-item .row .part {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#Home #carouselExampleCaptions .carousel-inner .carousel-item .row .part .item .caption h5 {
+    font-size: 45px;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    font-weight: 700;
+
+
+}

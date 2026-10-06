@@ -1,0 +1,62 @@
+:root {
+    --main-color: #a9bfc5;
+}
+
+* {
+    font-family: "Oswald", sans-serif;
+}
+
+body {
+    background: #D3CCE3;
+    background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);
+    background: linear-gradient(to right, #E9E4F0, #D3CCE3);
+}
+
+nav.navbar .navbar-brand {
+    width: 8%;
+}
+
+.pages-links {
+    background-color: transparent;
+    color: var(--main-color) !important;
+    border: 1px solid var(--main-color);
+    display: block;
+    transition:
+        color .15s ease-in-out,
+        background-color .15s ease-in-out,
+        border-color .15s ease-in-out,
+        box-shadow .15s ease-in-out;
+}
+
+.pages-links.active,
+.pages-links:hover {
+    border-color: var(--main-color);
+    background-color: var(--main-color);
+    color: var(--second-color) !important;
+    outline: 0;
+    position: relative;
+    padding: var(--bs-pagination-padding-y) var(--bs-pagination-padding-x);
+    font-size: var(--bs-pagination-font-size);
+    text-decoration: none;
+}
+
+.pages-links:focus {
+    border-color: var(--main-color) !important;
+    z-index: 3;
+    outline: 0;
+}
+
+.btn.pages-links.disabled {
+    color: var(--second-color) !important;
+    background-color: var(--main-color);
+}
+
+#cartNumber {
+    width: max-content;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
