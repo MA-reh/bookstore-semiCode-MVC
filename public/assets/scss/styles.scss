@@ -62,6 +62,37 @@ header#Auth {
     display: flex;
     flex-direction: column;
 
+    #Login {
+        flex-grow: 1;
+        padding: 48px 0px;
+        .container {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            h2 {
+                font-size: 45px;                
+            }
+            form {
+                height: max-content;
+                width: 35%;
+                max-width: 650px;
+                
+                @include respond(350) {
+                    width: 100%;
+                    max-width: 350px;
+                }
+                @include respond(850) {
+                    width: 50%;
+                    max-width: 550px;
+                }
+                @include respond(1050) {
+                    width: 40%;
+                    max-width: 550px;
+                }
+            }
+        }
+    }
+
     #Register {
         flex-grow: 1;
         padding: 48px 0px;
@@ -71,6 +102,7 @@ header#Auth {
             justify-content: center;
             form {
                 height: max-content;
+                width: 100%;
                 max-width: 650px;
 
                 @include respond(350) {

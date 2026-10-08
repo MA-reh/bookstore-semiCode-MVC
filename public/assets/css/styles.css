@@ -73,6 +73,41 @@ header#Auth {
   display: flex;
   flex-direction: column;
 }
+header#Auth #Login {
+  flex-grow: 1;
+  padding: 48px 0px;
+}
+header#Auth #Login .container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+header#Auth #Login .container h2 {
+  font-size: 45px;
+}
+header#Auth #Login .container form {
+  height: max-content;
+  width: 35%;
+  max-width: 650px;
+}
+@media (max-width: 1300px) {
+  header#Auth #Login .container form {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1300px) {
+  header#Auth #Login .container form {
+    width: 50%;
+    max-width: 550px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1300px) {
+  header#Auth #Login .container form {
+    width: 40%;
+    max-width: 550px;
+  }
+}
 header#Auth #Register {
   flex-grow: 1;
   padding: 48px 0px;
@@ -84,6 +119,7 @@ header#Auth #Register .container {
 }
 header#Auth #Register .container form {
   height: max-content;
+  width: 100%;
   max-width: 650px;
 }
 @media (max-width: 1300px) {

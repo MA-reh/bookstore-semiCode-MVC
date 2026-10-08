@@ -341,6 +341,7 @@ require_once __DIR__ . "/functions.php";
 
     <?php include __DIR__ . "/../shared/globalScriptsJS.php" ?>
 
+    <script src="<?= asset("js/profile/profile.js") ?>"></script>
 
     <?php
     if (isAuth("admin")) {
