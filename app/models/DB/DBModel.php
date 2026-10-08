@@ -119,7 +119,7 @@ class DBModel extends Model
         $stmt = $DB->query("SELECT * FROM 
                             {$tableName}  
                             {$wheresQuery} 
-                            GROUP BY id DESC
+                            ORDER BY id DESC
                             LIMIT {$numberOfCards} OFFSET {$offset};");
 
         $data = $stmt->fetchAll();
@@ -149,7 +149,7 @@ class DBModel extends Model
         $stmt = $DB->query("SELECT * 
                             FROM users  
                             {$wheresQuery} 
-                            GROUP BY id DESC
+                            ORDER BY id DESC
                             LIMIT {$numberOfCards} OFFSET {$offset};");
 
         $data = $stmt->fetchAll();
@@ -177,7 +177,7 @@ class DBModel extends Model
         $stmt = $DB->query("SELECT * 
                             FROM authors  
                             {$wheresQuery} 
-                            GROUP BY id DESC
+                            ORDER BY id DESC
                             LIMIT {$numberOfCards} OFFSET {$offset};");
 
         $data = $stmt->fetchAll();

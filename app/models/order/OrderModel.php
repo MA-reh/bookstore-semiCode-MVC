@@ -19,7 +19,7 @@ class OrderModel extends Model
                             orders
                             LEFT JOIN users ON users.id = orders.customer_id
                             {$wheresQuery} 
-                            GROUP BY id DESC
+                            ORDER BY id DESC
                             LIMIT {$numberOfCards} OFFSET {$offset};");
 
         $data = $stmt->fetchAll();

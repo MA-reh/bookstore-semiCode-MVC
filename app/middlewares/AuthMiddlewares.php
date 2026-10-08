@@ -2,6 +2,7 @@
 
 require_once __DIR__ . "/middleware.php";
 
+
 class AuthMiddlewares implements Middleware
 {
     public function handle(string ...$roles): void

@@ -19,7 +19,7 @@ class ProfileController extends Controller
             $data = $this->getCustomerData();
         }
 
-        $this->view("profile/Profile", $data);
+        $this->view("profile/profile", $data);
     }
 
     private function getAdminData(string $category = "all"): array

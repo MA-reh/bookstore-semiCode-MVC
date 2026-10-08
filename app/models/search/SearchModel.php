@@ -15,7 +15,7 @@ class SearchModel extends Model
 
         $subQuery = "";
 
-        if (!empty($search) && false) {
+        if (!empty($search)) {
             $subQuery = "WHERE
                             concat(first_name, ' ', last_name) LIKE '%$search%'
                             OR
@@ -23,7 +23,7 @@ class SearchModel extends Model
                             OR
                             age LIKE '%$search%'
                             OR
-                            phone LIKE '%$search%'";
+                            phone LIKE '%$search%';";
         }
 
         $stmt = $DB->query("SELECT * 

@@ -35,7 +35,7 @@
             }
 
             $stock = ($book["stock"] > 0) ? $book["stock"] : "Out Of Stock";
-            $stockClass = ($book["stock"] > 0) ? "mb-4" : "mb-1";
+            $stockClass = (isAuth("admin") && $book["stock"] > 0) ? "mb-4" : "mb-1";
 
             echo "
                 <div class='col-xl-4 col-sm-6 mb-3'>

@@ -40,7 +40,7 @@ class CartModel extends Model
 
         $orderId = self::getPendingOrdersId();
 
-        $totalPrice = $DB->query("SELECT SUM(subtotal) AS total FROM orders_items WHERE order_id = '{$orderId}'")->fetchColumn() ?? 0;
+        $totalPrice = $DB->query("SELECT SUM(subtotal) AS total FROM orders_items WHERE order_id = '{$orderId}';")->fetchColumn() ?? 0;
 
         $DB->exec("UPDATE orders SET total_price = {$totalPrice} WHERE id = '{$orderId}';");
 
@@ -54,7 +54,7 @@ class CartModel extends Model
 
         if ($orderId == false) return 0;
 
-        return $DB->query("SELECT COUNT(*) AS total FROM orders_items WHERE order_id = '{$orderId}'")->fetchColumn();
+        return $DB->query("SELECT COUNT(*) AS total FROM orders_items WHERE order_id = '{$orderId}';")->fetchColumn();
     }
     public static function addToCart()
     {
@@ -64,7 +64,7 @@ class CartModel extends Model
 
         if ($pendingOrderId == false) {
             // Create New Order
-            $DB->exec("INSERT INTO orders (customer_id) VALUES ('{$authId}')");
+            $DB->exec("INSERT INTO orders (customer_id) VALUES ('{$authId}');");
 
             $pendingOrderId = $DB->lastInsertId();
         }
@@ -148,7 +148,7 @@ class CartModel extends Model
                                 SET 
                                     quantity = quantity + 1,
                                     subtotal = subtotal + unit_price
-                                WHERE id = :orderItemId");
+                                WHERE id = :orderItemId;");
         $stmt->execute([
             "orderItemId" => Request::input("orderItemId"),
         ]);
@@ -175,14 +175,14 @@ class CartModel extends Model
                                 SET 
                                     quantity = quantity - 1,
                                     subtotal = subtotal - unit_price
-                                WHERE id = :orderItemId");
+                                WHERE id = :orderItemId;");
         $stmt->execute([
             "orderItemId" => Request::input("orderItemId"),
         ]);
 
         $totalPrice = self::updateTotalPriceOfOrders();
 
-        $stmt = $DB->prepare("SELECT * FROM orders_items WHERE id = :orderItemId");
+        $stmt = $DB->prepare("SELECT * FROM orders_items WHERE id = :orderItemId;");
 
         $stmt->execute([
             "orderItemId" => Request::input("orderItemId"),
@@ -191,7 +191,7 @@ class CartModel extends Model
         $orderItem = $stmt->fetch();
 
         if ($orderItem["quantity"] == 0) {
-            $stmt = $DB->prepare("DELETE FROM orders_items WHERE id = :orderItemId");
+            $stmt = $DB->prepare("DELETE FROM orders_items WHERE id = :orderItemId;");
             $stmt->execute([
                 "orderItemId" => Request::input("orderItemId"),
             ]);
@@ -209,7 +209,7 @@ class CartModel extends Model
     {
         $DB = Database::getConnection();
 
-        $stmt = $DB->prepare("DELETE FROM orders_items WHERE id = :orderItemId");
+        $stmt = $DB->prepare("DELETE FROM orders_items WHERE id = :orderItemId;");
         $stmt->execute([
             "orderItemId" => Request::input("orderItemId"),
         ]);
@@ -228,7 +228,7 @@ class CartModel extends Model
 
         $orderId = \Request::input("orderId");
 
-        $stmt = $DB->prepare("UPDATE orders SET status = 'ordered' WHERE id = :orderId");
+        $stmt = $DB->prepare("UPDATE orders SET status = 'ordered' WHERE id = :orderId;");
         $stmt->execute([
             "orderId" => $orderId,
         ]);
@@ -237,7 +237,7 @@ class CartModel extends Model
                                 FROM orders_items 
                                 LEFT JOIN orders ON orders.id = orders_items.order_id
                                 LEFT JOIN books ON books.id = orders_items.book_id
-                                WHERE orders_items.order_id = :orderId");
+                                WHERE orders_items.order_id = :orderId;");
         $stmt->execute([
             "orderId" => $orderId,
         ]);
@@ -246,7 +246,7 @@ class CartModel extends Model
 
         // Change Stock
         for ($i = 0; $i < count($data); $i++) {
-            $stmt = $DB->prepare("UPDATE books SET stock = stock - :bookStock WHERE id = :bookId");
+            $stmt = $DB->prepare("UPDATE books SET stock = stock - :bookStock WHERE id = :bookId;");
             $stmt->execute([
                 "bookId" => $data[$i]["book_id"],
                 "bookStock" => $data[$i]["quantity"],
@@ -259,7 +259,7 @@ class CartModel extends Model
         $stmt = $DB->prepare("SELECT orders.*, users.name AS customer_name
                                 FROM orders
                                 LEFT JOIN users ON users.id = orders.customer_id
-                                WHERE orders.id = :orderId
+                                WHERE orders.id = :orderId;
                                 ");
         $stmt->execute([
             "orderId" => $orderId,

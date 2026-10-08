@@ -16,6 +16,7 @@ require_once __DIR__ . "/functions.php";
 <body>
     <?php include __DIR__ . "/../shared/navbar.php" ?>
 
+
     <section id="Profile" class="py-3">
         <div class="container-fluid">
             <div class="row row1">
@@ -101,7 +102,7 @@ require_once __DIR__ . "/functions.php";
                             <li class="nav-item" role="presentation">
                                 <button data-nav-category="books" class="nav-link me-2 " id="books-tab" data-bs-toggle="tab" data-bs-target="#books-tab-pane" type="button" role="tab" aria-controls="books-tab-pane" aria-selected="false">Books</button>
                             </li>
-                            <li class="nav-item dropdown <?= (isAuth("customer"))? "brDrop":"" ?>">
+                            <li class="nav-item dropdown <?= (isAuth("customer")) ? "brDrop" : "" ?>">
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="#">Action</a></li>
                                     <li><a class="dropdown-item" href="#">Another action</a></li>

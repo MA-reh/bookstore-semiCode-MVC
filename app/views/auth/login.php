@@ -25,6 +25,9 @@
                     <input type="password" class="form-control" id="Password" value="<?= old("password") ?>" name="password">
                     <?= getError("password") ?>
                 </div>
+                <div class="mb-3">
+                    <a class="ancor" href="<?= route("/auth/register") ?>">Haven't an Account?</a>
+                </div>
                 <button type="submit" class="btn btn-success w-100">Login</button>
             </form>
         </div>

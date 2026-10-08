@@ -50,7 +50,7 @@ function back(?string $key = null, string $msg = "")
 
     if ($key !== null) {
         $_SESSION["_msg"][$key] = $msg;
-        if ($_SESSION["_msg"]["correct"]) {
+        if (isset($_SESSION["_msg"]["correct"]) && $_SESSION["_msg"]["correct"]) {
             unset($_SESSION["_old"]);
         }
     }

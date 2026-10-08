@@ -18,7 +18,7 @@ class AdminModel extends Model
         $stmt = $DB->prepare("UPDATE users 
                                 SET 
                                 is_banned = :newBan
-                                WHERE id = :userId
+                                WHERE id = :userId;
                                 ");
 
         $user["is_banned"] = !$user["is_banned"];
@@ -44,7 +44,7 @@ class AdminModel extends Model
                                 SET 
                                     status = :status, 
                                     cancel_reason = :cancel_reason
-                                WHERE id = :orderId
+                                WHERE id = :orderId;
                                 ");
 
         $stmt->execute([
@@ -56,7 +56,7 @@ class AdminModel extends Model
         $stmt = $DB->prepare("SELECT orders.*, users.name AS customer_name
                                 FROM orders
                                 LEFT JOIN users ON users.id = orders.customer_id
-                                WHERE orders.id = :orderId
+                                WHERE orders.id = :orderId;
                                 ");
         $stmt->execute([
             "orderId" => $orderId,

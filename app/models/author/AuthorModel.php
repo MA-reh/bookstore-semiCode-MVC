@@ -11,7 +11,7 @@ class AuthorModel extends Model
         $stmt = $DB->prepare("INSERT INTO authors
                         (name, bio)
                         VALUES
-                        (:name, :bio)");
+                        (:name, :bio);");
 
         $stmt->execute([
             "name" => Request::input("authorName"),

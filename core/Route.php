@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . "/../app/controllers/Controller.php";
+
 class Route
 {
     private static array $routes = [];
@@ -34,12 +36,13 @@ class Route
     {
         $url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 
+
         $method = $_SERVER["REQUEST_METHOD"];
 
         $flag = false;
 
         foreach (self::$routes as $route) {
-            $args = self::matchRoute(baseUrl . "/" . ltrim($route["url"], "/"), $url);
+            $args = self::matchRoute(baseUrl . $route["url"], $url);
 
             if (is_array($args)) {
 
@@ -64,7 +67,8 @@ class Route
             Response::error("405 {$route['method']} Not Allowed.", 405);
         }
 
-        Response::error("404 Not Found.", 404); // not complete
+
+        Controller::views("errors/404");
         return;
     }
 
@@ -74,6 +78,8 @@ class Route
         $regex = "/\{[A-Za-z_][A-Za-z_0-9]*\}/";
 
         $pattern = preg_replace($regex, "([^/]+)", $route);
+
+
 
         $pattern = "#^{$pattern}$#";
 

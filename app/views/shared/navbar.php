@@ -16,7 +16,12 @@
                     <?php
                     $homeLink = route('');
                     $profileLink = route('/profile');
-                    $registerLink = route('auth/createNewUser');
+                    $registerLink = route('auth/register');
+
+                    if (isAuth("admin")) {
+                        $registerLink = route('auth/createNewUser');
+                    }
+
                     $loginLink = route('auth/login');
                     $logoutLink = route('auth/logout');
 

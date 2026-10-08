@@ -19,7 +19,7 @@ class BookModel extends Model
                             books 
                             left join authors ON authors.id = books.author_id
                             {$wheresQuery} 
-                            GROUP BY id {$sortType}
+                            ORDER BY id {$sortType}
                             LIMIT {$numberOfCards} OFFSET {$offset};");
 
         $data = $stmt->fetchAll();
