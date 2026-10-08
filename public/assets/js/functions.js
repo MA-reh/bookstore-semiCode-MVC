@@ -298,7 +298,7 @@ function editUser(response) {
         }, 100);
 
         for (let objectOfData in data) {
-            $(`[data-input-value="${objectOfData}"]`).html(`<p class="">${data[objectOfData]}</p>`);
+            $(`[data-input-value="${objectOfData}"] p`).html(`${data[objectOfData]}`);
 
             auth[objectOfData] = data[objectOfData];
         }
@@ -779,7 +779,7 @@ function userCardComponent(data, categoryName, hasBanded = false) {
             ${bannedBadge}
 
             <div class="profile mb-4">
-                <img src="${imagePath}" alt="${imageName} logo" class="img-fluid">
+                <img src="${imagePath}" onerror="this.src='${baseUrl + `/assets/images/${imageName}.png`}" alt="${imageName} logo" class="img-fluid">
 
                 <h5 class="mb-0">
                     ${data.name}
@@ -861,7 +861,7 @@ function authorComponent(data, categoryName, isEditing = false) {
 
     let authorStructure = `
                 <div class="profile mb-4">
-                    <img src="${imagePath}" alt="${data.name} logo" class="img-fluid">
+                    <img src="${imagePath}" onerror="this.src='${baseUrl + "/assets/images/author.png"}" alt="${data.name} logo" class="img-fluid">
 
                     <h5 class="mb-0 nameAuthor">
                         ${data.name}
@@ -921,7 +921,7 @@ function bookComponent(data, categoryName, status = "book", hasReturn = false) {
                             <h6 class="mb-0">Stock :</h6>
                         </div>
                     </div>
-                    <div class="col-8 mb-4">
+                    <div class="col-8 ${(data["stock"] == 0) ? "mb-1" : "mb-4"}">
                         <div class="items">
                             <h6 class="mb-0 stockBook">
                                 ${(data.stock > 0) ? data.stock : `Out Of Stock`}
@@ -937,6 +937,8 @@ function bookComponent(data, categoryName, status = "book", hasReturn = false) {
                 </div>    
                 `;
             }
+        } else if (auth["role"] == "admin") {
+            buttonsUser = `<p class='alert alert-info text-center mb-0'>You Are Admin</p>`;
         }
     } else if (status == "cart") {
 
@@ -961,7 +963,7 @@ function bookComponent(data, categoryName, status = "book", hasReturn = false) {
             buttonsUser = `
             <div class='input-group w-75 mx-auto'>
                 <button class='btn btn-outline-danger fw-bolder changeOrderItem' onclick='changeOrderItem("decrease", ${data.order_item_id}, this)'><i class="fa-solid fa-minus"></i></button>
-                <input type='number' min='0' class='form-control text-center' id='input-quantity-${data.id ?? data["book_id"]}' value='${data["quantity"]}' placeholder='Quantity' required disabled>
+                <input type='number' min='0' class='form-control text-center' id='input-quantity-cart-${data.id ?? data["book_id"]}' value='${data["quantity"]}' placeholder='Quantity' required disabled>
                 <button class='btn btn-outline-success fw-bolder changeOrderItem' onclick='changeOrderItem("increase", ${data.order_item_id}, this)'><i class="fa-solid fa-plus"></i></button>
             </div>    
         `;
@@ -999,7 +1001,7 @@ function bookComponent(data, categoryName, status = "book", hasReturn = false) {
     let structureOfBook = `
                 ${iconDelete}
                 <div class="profile mb-4">
-                    <img src="${imagePath}" alt="${imageName} logo" class="img-fluid">
+                    <img src="${imagePath}" onerror="this.src='${baseUrl + "/assets/images/uploads/book.png"}" alt="${imageName} logo" class="img-fluid">
 
                     <h5 class="mb-0">
                         ${data.title}

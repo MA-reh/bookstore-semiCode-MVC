@@ -1,9 +1,12 @@
 function addBookIntoCart(bookId, quantityOfBook) {
     quantityInput = $(`#input-quantity-${bookId}`);
     let quantity = Number(quantityInput.val());
+    let inputBookIntoCart = $(`#popupCartModal .cartBooks[data-id="${bookId}"] #input-quantity-cart-${bookId}`);
+    let valueInputBookIntoCart = inputBookIntoCart.val();
 
     if (quantity <= 0) return;
-    if (quantity > quantityOfBook) {
+
+    if (quantity > quantityOfBook || quantity + valueInputBookIntoCart > quantityOfBook) {
         showAlerts(
             {
                 "status": 422,
@@ -38,8 +41,13 @@ function changeOrderItem(typeOfAction, orderItemId, that) {
         inputValue = $(that).parent().find("input").val(),
         stockBook = $(`.categories-tabs[data-category="books"] [data-id="${bookId}"] .stockBook`).text();
 
+    console.log(bookId);
+    console.log(inputValue);
+    console.log($(`.categories-tabs[data-category="books"] [data-id="${bookId}"] .stockBook`));
+    console.log(stockBook);
+
     if (typeOfAction == "increase") {
-        if (inputValue > stockBook) {
+        if (inputValue >= +stockBook) {
             showAlerts({
                 status: 422,
                 message: "Can't add Upper Stock The Book"
@@ -49,6 +57,7 @@ function changeOrderItem(typeOfAction, orderItemId, that) {
     }
 
     $(that).parent().find(".changeOrderItem").attr("disabled", true);
+
     if (typeOfAction == "increase") {
         newRequestByAjax("profile/increaseOrderItem", "POST", dataForm, changeQuantityIntoCart, showAlerts);
     } else if (typeOfAction == "decrease") {
@@ -75,7 +84,7 @@ function changeQuantityIntoCart(response) {
         }
         $bookItemIntoCart.parent().remove();
     } else {
-        $bookItemIntoCart.find(`#input-quantity-${data["orderItem"]["book_id"]}`).val(quantity);
+        $bookItemIntoCart.find(`#input-quantity-cart-${data["orderItem"]["book_id"]}`).val(quantity);
         $bookItemIntoCart.find(".new-subTotal").text(data["orderItem"]["subtotal"]);
     }
 
@@ -102,6 +111,11 @@ function deleteItemFromCart(orderItemId, that) {
             let rowOfData = $("#popupCartModal .modal-body .data");
             cardItem.parent().remove();
             updateTotalNumberOfCart(data["totalPrice"], data["totalItems"]);
+            showAlerts({
+                status: 200,
+                message: "Deleted Book has been Successfully"
+            }, "toast");
+
             if (rowOfData.find(".card").length == 0) {
                 rowOfData.append(`<div class='col'>
                                     <h5 class='alert alert-warning text-center mt-2'>Your Cart Is Empty</h5>
